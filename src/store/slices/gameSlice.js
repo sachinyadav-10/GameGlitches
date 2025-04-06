@@ -9,24 +9,19 @@ export const fetchGames = createAsyncThunk(
   async (filters, thunkAPI) => {
     const { category, tags, releaseYear, popularity, searchQuery, currentPage } = filters;
 
-    console.log("🔥 FILTERS:", filters); // DEBUG
 
     const params = new URLSearchParams();
 
     if (category) params.append('genres', category.toLowerCase());
-
-    // FIX 2: Tags must be slugs (e.g., "multiplayer") not display names
     if (tags?.length) {
       const slugTags = tags.map(tag => tag.toLowerCase().replace(/\s/g, '-'));
       params.append('tags', slugTags.join(','));
     }
 
-    // FIX 3: Correct date formatting
     if (releaseYear) {
       params.append('dates', `${releaseYear}-01-01,${releaseYear}-12-31`);
     }
 
-    // FIX 4: Popularity sorting
     if (popularity) {
       const ordering = popularity === 'high' ? '-rating' :
                        popularity === 'low' ? 'rating' :

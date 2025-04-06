@@ -10,7 +10,6 @@ const SearchBar = () => {
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
-      // Dispatch the search query after 500ms of inactivity
       dispatch(setSearchQuery(query));
     }, 500);
 

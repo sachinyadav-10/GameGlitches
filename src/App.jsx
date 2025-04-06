@@ -6,7 +6,7 @@ import SideBar from "./components/SideBar";
 import Home from "./pages/Home";
 import GameDetail from "./pages/GameDetails";
 import Library from "./pages/Library";
-import LoginPage from "./pages/LoginPage"; // ✅ Import Login Page
+import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_KEY;

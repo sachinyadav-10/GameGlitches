@@ -3,7 +3,6 @@ import favoritesReducer from "./slices/FavourateSlice";
 import gameReducer from "./slices/gameSlice";
 import filterReducer from "./slices/filterSlice";
 
-// Load favorites from localStorage
 const loadFavorites = () => {
     try {
         const serializedState = localStorage.getItem("favorites");
@@ -14,7 +13,6 @@ const loadFavorites = () => {
     }
 };
 
-// Save favorites to localStorage
 const saveFavorites = (favorites) => {
     try {
         const serializedState = JSON.stringify(favorites);
@@ -24,11 +22,6 @@ const saveFavorites = (favorites) => {
     }
 };
 
-// Initialize store with persisted favorites
-const preloadedState = {
-    favorites: loadFavorites(), // Ensure the structure matches the reducer's state
-};
-
 export const store = configureStore({
     reducer: {
         favorites: favoritesReducer,
@@ -36,15 +29,14 @@ export const store = configureStore({
         filters: filterReducer,
     },
     preloadedState: {
-        favorites: { favorites: loadFavorites() }, // Ensure it's wrapped in an object if needed
+        favorites: { favorites: loadFavorites() },
     },
 });
 
-// Listen for changes in favorites and save to localStorage
 store.subscribe(() => {
     try {
         const { favorites } = store.getState();
-        saveFavorites(favorites.favorites); // Ensure correct access to favorites array
+        saveFavorites(favorites.favorites);
     } catch (error) {
         console.error("Error subscribing to store:", error);
     }

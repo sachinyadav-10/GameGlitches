@@ -3,10 +3,7 @@ import axios from "axios";
 const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
 const BASE_URL = "https://api.rawg.io/api/games";
 
-/**
- * Builds the query URL based on Redux filter state.
- * @param {Object} filters - Redux filters: category, tags, year, popularity, search, page
- */
+
 export const fetchGames = async (filters) => {
   const { category, tags, year, popularity, search, page } = filters;
 
@@ -25,19 +22,16 @@ export const fetchGenres = async () => {
     const response = await axios.get(
       `https://api.rawg.io/api/genres?key=${API_KEY}`
     );
-    return response.data.results; // array of genres with {name, slug}
+    return response.data.results;
   };
   
   export const fetchTags = async () => {
     const response = await axios.get(
       `https://api.rawg.io/api/tags?key=${API_KEY}`
     );
-    return response.data.results; // array of tags with {name, slug}
+    return response.data.results; 
   };
-/**
- * Fetches detailed info of a game by ID.
- * @param {string|number} id - RAWG game ID
- */
+
 export const fetchGameDetails = async (id) => {
   const response = await axios.get(`${BASE_URL}/${id}?key=${API_KEY}`);
   return response.data;

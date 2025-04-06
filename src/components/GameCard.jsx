@@ -50,19 +50,18 @@ const GameCard = ({ game }) => {
           ))}
         </Card.Text>
 
-        <Card.Text className="d-flex justify-content-between align-items-center px-3 py-2 genre-rating-section">
+        <div className="d-flex justify-content-between align-items-center px-3 py-2 genre-rating-section">
             <div className="d-flex align-items-center genre-text ms-2">
-            <SportsEsportsIcon fontSize="medium"/>
-            <span>{game.genres?.map((genre) => genre.name).join(",") || "No Category"}</span>
+              <SportsEsportsIcon fontSize="medium" />
+              <span>{game.genres?.map((genre) => genre.name).join(", ") || "No Category"}</span>
             </div>
-          
-          <div className="vr mx-3 divider-line" 
-          style={{height:'1.8rem',opacity:'0.3'}}
-          ></div>
-           
-           <div className="d-flex align-items-center rating-text me-2">
-            ⭐{game.rating} </div>
-        </Card.Text>
+
+            <div className="vr mx-3 divider-line" style={{ height: "1.8rem", opacity: "0.3" }}></div>
+
+            <div className="d-flex align-items-center rating-text me-2">
+              ⭐{game.rating}
+            </div>
+        </div>
 
         <div className="text-center mt-3">
         <button className="card-btn">

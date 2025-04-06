@@ -113,7 +113,6 @@ const Sidebar = () => {
 
   return isHome ? (
     <>
-      {/* Toggle button for mobile - now a minimal menu icon */}
       <div className="d-md-none position-absolute top-0 start-0 p-2 mobile-menu-btn">
         <Button
           variant="light"
@@ -126,13 +125,11 @@ const Sidebar = () => {
         </Button>
       </div>
 
-      {/* Static sidebar for md+ screens */}
       <div className="d-none d-md-block p-3  rounded shadow sidebar  custom-sidebar">
         <h4 className="mb-3 sidebar-title">Filter & Sort</h4>
         <SidebarContent />
       </div>
 
-      {/* Offcanvas for small screens only */}
       {show && (
         <div className="d-md-none">
           <Offcanvas show={show} onHide={closeOffcanvas} placement="start" className="custom-offcanvas">
