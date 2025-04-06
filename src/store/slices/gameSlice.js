@@ -13,7 +13,6 @@ export const fetchGames = createAsyncThunk(
 
     const params = new URLSearchParams();
 
-    // FIX 1: Category must be the "slug" like "action" not "Action"
     if (category) params.append('genres', category.toLowerCase());
 
     // FIX 2: Tags must be slugs (e.g., "multiplayer") not display names
@@ -45,9 +44,6 @@ export const fetchGames = createAsyncThunk(
     const url = `https://api.rawg.io/api/games?${params.toString()}&key=${API_KEY}`;
     const res = await fetch(url);
     const data = await res.json();
-
-    console.log("🎯 RAWG URL:", url); // DEBUG
-    console.log("🧩 API Result Count:", data.results?.length); // DEBUG
 
     return data;
   }

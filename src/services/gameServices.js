@@ -18,8 +18,6 @@ export const fetchGames = async (filters) => {
   if (popularity) url += `&ordering=${popularity}`;
   if (search) url += `&search=${encodeURIComponent(search)}`;
 
-  console.log("🔍 Final RAWG API URL:", url);
-
   const response = await axios.get(url);
   return response.data.results;
 };
